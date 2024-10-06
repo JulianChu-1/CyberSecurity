@@ -22,6 +22,28 @@
 
 #### Other
 - Access Control Matrix Model, a protection state (relative to a set of privileges **P**) is a triple (**S**,**O**,**M**).
+- Matrix ***need to write !!!!***
 
 ### Week 2
+#### General cryptographic schema
 
+- A message is to be transferred from one principal (Sender) to another (Recipient) across some sort of Internet service.
+- Plaintext ***P***, Encryption ***E***, Ciphertext ***C***, Decryption ***D***
+- **Symmetric** algorithms, ***Key1 = Key2***
+- **Asymmetric** algorithms, different keys, public key can be published without compromising private key.
+- A mathematical formalization of encryption/decryption
+  ![](Asset/mathematical%20formalization.png)
+
+#### Three characteristics of cryptographic systems
+1. Type of operations used to transform plaintext into ciphertext
+    - **Substitution**, each element in plaintext is mapped into another element.
+    - **Transposition**, elements in plaintext are rearranged.
+2. Number of key used
+    - **Symmetric**, single-key, secret-key, or conventional encryption: both sender and receiver use "same" key.
+    - **Asymmetric**, two-key, or public-key encryption: sender and receiver use different keys.
+3. Way in which plaintext is processed
+    - **Block cipher** processes input one block of elements at a time, producing an output block for each input block.
+    - **Stream cipher** processes input elements continuously, producing in output one element at a time, as it goes along.
+
+#### Cryptanalysis and brute-force attacks
+- 
