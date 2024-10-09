@@ -26,5 +26,24 @@
     - Security Review, verifying that security policies and standards have been applied to a system. 
 2. The "7 Pernicious Kingdoms" Taxonomy (7PK)
     - Input Validation and Representation, such as, buffer overflow, command injection, format string attack, integer overflow, path manipulation. SQL injection, cross-site scripting.
-    - API Abuse, 
+    - API Abuse, it can be caused by the caller failing to honor its end of contract, or by using components that are inherently unsafe.
+    - Security Features, improper implementation of security mechanisms and controls.
+    - Time and State, improper implementation of concurrency mechanisms that allow synchronized access to shared resources.
+    - Errors, runtime errors are exceptional situations that arise due to unexpected behaviors during execution.
+    - Code Quality, poor code quality could lead to unpredictable behavior.
+    - Encapsulation, is used to control access to internal data and operations of a software component.
+    - Deployment Environment.
 
+### Week 2
+#### Terminology
+- Instruction Cycle: Fetch (from memory) $\rightarrow$ Decode (the instruction and fetch data) $\rightarrow$ Execute
+- Arithmetic & Logic Unit (ALU): performs arithmetic and logical operations.
+- Control Unit (CU): orchestrates the instruction execution cycle in the CPU.
+- Clock: synchronizes the operations of the CPU by producing pulses at a constant rate (clock rate), which is an indicator or the CPU speed (measured in Hertz).
+- Registers: internal storage locations built in the CPU to provide fast access to data.
+- Cache: small but fast memory that is typically used to store a copy of frequently used data from the main memory in order to reduce average memory access time.
+
+#### 32-bit x86 Assembly
+- Each processor has an "instruction set", **assembly** is a low-level language that depends on the instruction set of a specific processor. Therefore, assembly is not portable. We will focus on the assembly for the 32-bit architecture of Intel's x86 family of processors. Such architecture is known as IA32, aka i386.
+- IA32 CPU Registers
+  - Eight 32-bit general-purpose registers: 
