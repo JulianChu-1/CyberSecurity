@@ -46,4 +46,34 @@
     - **Stream cipher** processes input elements continuously, producing in output one element at a time, as it goes along.
 
 #### Cryptanalysis and brute-force attacks
-- 
+
+
+### Week 3
+#### Substitution
+A substitution cipher is one in which the letters of plaintext are replaced by other letters or by numbers or symbols.
+1. Caesar cipher
+   - Replace each letter of the alphabet with the letter standing ***x*** places further down the alphabet.
+   - $$ C = E(\mathbf{x}, P) = (P + \mathbf{x}) \mod 26 $$
+   - Insecurity: There are only 25 keys to try. 
+2. Mono-alphabetic substitution ciphers
+   - Generalize Caesar cipher by allowing an arbitrary substitution.
+   - Let **K** be the set of all permutations on the alphabet **A**. 26 letters $\rightarrow$ 26! possible keys.
+   - Insecurity: Easy to crack using frequency analysis.
+3. Homophonic substitution ciphers
+
+4. Playfair cipher
+
+5. Polyalphabetic substitution ciphers (Vigenère cipher)
+   - A polyalphabetic substitution cipher based on a tableau where each row is a Caesar Cipher with incremental shift.
+   - A sequence of plaintext letters $P = p_0, p_1, p_2, \dots, p_{n-1}$ and a key consisting of the sequence of letters $K = k_0, k_1, k_2, \dots, k_{m-1}$. The fomula is :
+        $$ C_i = \left( p_i + k_{i \mod m} \right) \mod 26 $$
+   - 
+
+6. Vernam cipher: XOR
+-  
+
+7. One-time pad
+
+
+
+
