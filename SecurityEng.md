@@ -46,4 +46,10 @@
 #### 32-bit x86 Assembly
 - Each processor has an "instruction set", **assembly** is a low-level language that depends on the instruction set of a specific processor. Therefore, assembly is not portable. We will focus on the assembly for the 32-bit architecture of Intel's x86 family of processors. Such architecture is known as IA32, aka i386.
 - IA32 CPU Registers
-  - Eight 32-bit general-purpose registers: 
+  - Eight 32-bit general-purpose registers: EAX, EBX, ECX, EDX, EBP, ESP, ESI, & EDI.
+  - One 32-bit **instruction pointer (EIP)**: holds the address of the next destination to be executed.
+  - One 32-bit **flag register (EFLAGS)**: a collection of binary bits that store CPU control info or status info based on the result of the last operation.
+  - Six 16-bit segment registers.
+- Endianness refers to the order of bytes in memory that make up larger multi-byte data. The x86 family use **little-endian order**, which stores the least significant byte at the smallest address.
+- System calls (syscalls) are interfaces between processes and the operating system to request a variety of services from kernel, such as I/O tasks, device management and process control. Each syscall has a unique number that indentifies it to the system. If a syscall requires arguments, you can pass up to 6 arguments in the registers EBX, ECX, EDX, ESI, EDI, and EBP (in that order).
+- IA32 assembly instructions may require between zero and three **operands**. The operands could be immediate values \<imm>, registers \<reg>, or memory locations \<mem>. 
