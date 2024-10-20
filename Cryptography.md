@@ -53,7 +53,7 @@
 A substitution cipher is one in which the letters of plaintext are replaced by other letters or by numbers or symbols.
 1. Caesar cipher
    - Replace each letter of the alphabet with the letter standing ***x*** places further down the alphabet.
-   - $$ C = E(\mathbf{x}, P) = (P + \mathbf{x}) \mod 26 $$
+    $$ C = E(\mathbf{x}, P) = (P + \mathbf{x}) \mod 26 $$
    - Insecurity: There are only 25 keys to try. 
 2. Mono-alphabetic substitution ciphers
    - Generalize Caesar cipher by allowing an arbitrary substitution.
