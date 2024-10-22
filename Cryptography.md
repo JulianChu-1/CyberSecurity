@@ -53,7 +53,7 @@
 A substitution cipher is one in which the letters of plaintext are replaced by other letters or by numbers or symbols.
 1. Caesar cipher
    - Replace each letter of the alphabet with the letter standing ***x*** places further down the alphabet.
-    $$ C = E(\mathbf{x}, P) = (P + \mathbf{x}) \mod 26 $$
+   - $$ C = E(\mathbf{x}, P) = (P + \mathbf{x}) \mod 26 $$
    - Insecurity: There are only 25 keys to try. 
 2. Mono-alphabetic substitution ciphers
    - Generalize Caesar cipher by allowing an arbitrary substitution.
@@ -70,9 +70,23 @@ A substitution cipher is one in which the letters of plaintext are replaced by o
    - 
 
 6. Vernam cipher: XOR
--  
+   - It works on binary data (bits) rather than letters, using **XOR**, $A \oplus B$.
 
 7. One-time pad
+   - Use a truly random key that is: as long as the message, so that the key need not be repeated, used to encrypt and decrypt a single message, and then discarded.
+
+#### Transposition 
+1. Rail fence cipher:
+   - Plaintext is written down as a sequence of diagonals and then read off as a sequence of rows.
+   - 
+2. Rotating (turning) grilles
+   - 
+
+3. Multiple-stage columnar transposition cipher
+
+### Week 4
+#### Steganography
+- 
 
 
 
