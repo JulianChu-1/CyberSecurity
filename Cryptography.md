@@ -56,29 +56,31 @@ A substitution cipher is one in which the letters of plaintext are replaced by o
    - $$ C = E(\mathbf{x}, P) = (P + \mathbf{x}) \mod 26 $$
    - Insecurity: There are only 25 keys to try. 
 2. Mono-alphabetic substitution ciphers
-   - Generalize Caesar cipher by allowing an arbitrary substitution.
+   - Generalize Caesar cipher by allowing an arbitrary (任意的) substitution.
    - Let **K** be the set of all permutations on the alphabet **A**. 26 letters $\rightarrow$ 26! possible keys.
    - Insecurity: Easy to crack using frequency analysis.
 3. Homophonic substitution ciphers
+   - Provide multiple substitutes for a single letter to make frequency analysis more difficult.
+   - For example, A $\rightarrow$ {12, 34, 56}, we can randomly choose a string to replace it.
 
 4. Playfair cipher
+   - ![](Asset/Playfair.jpg)
 
 5. Polyalphabetic substitution ciphers (Vigenère cipher)
    - A polyalphabetic substitution cipher based on a tableau where each row is a Caesar Cipher with incremental shift.
-   - A sequence of plaintext letters $P = p_0, p_1, p_2, \dots, p_{n-1}$ and a key consisting of the sequence of letters $K = k_0, k_1, k_2, \dots, k_{m-1}$. The fomula is :
-        $$ C_i = \left( p_i + k_{i \mod m} \right) \mod 26 $$
-   - 
+   ![](Asset/Vigenère.jpg)
 
 6. Vernam cipher: XOR
    - It works on binary data (bits) rather than letters, using **XOR**, $A \oplus B$.
+   - $P \oplus K = C$, $C \oplus K = P$
 
 7. One-time pad
-   - Use a truly random key that is: as long as the message, so that the key need not be repeated, used to encrypt and decrypt a single message, and then discarded.
+   - Improvement to Vernam, use a truly random key that is: as long as the message, so that the key need not be repeated, used to encrypt and decrypt a single message, and then discarded.
 
 #### Transposition 
 1. Rail fence cipher:
-   - Plaintext is written down as a sequence of diagonals and then read off as a sequence of rows.
-   - 
+   - ![](Asset/Rail%20fence.jpg)
+
 2. Rotating (turning) grilles
    - 
 
@@ -86,8 +88,9 @@ A substitution cipher is one in which the letters of plaintext are replaced by o
 
 ### Week 4
 #### Steganography
-- 
+- Conceal the existence of the message. For example, Arrangement of words or letters, Invisible ink, Pin punctures.
 
 
-
+### Week 5
+1. DES De
 
