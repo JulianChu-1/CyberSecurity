@@ -87,9 +87,19 @@ A substitution cipher is one in which the letters of plaintext are replaced by o
 3. Multiple-stage columnar transposition cipher
 
 ### Week 4
-#### Steganography
-- Conceal the existence of the message. For example, Arrangement of words or letters, Invisible ink, Pin punctures.
+#### Steganography and Composite ciphers
+   - Conceal the existence of the message. For example, Arrangement of words or letters, Invisible ink, Pin punctures.
+   - Watermarking and DRM (Digital Rights Management)
+   - Product ciphers chain substitution-transposition combinations. One example is Rotor machines used in WW2. Used a series of cylinders, each giving one substitution, which rotated and changed after each letter was encrypted.
 
+#### Feistel cipher
+   - ![](Asset/Feistel.jpg)
+   - Small block size (e.g., n = 4): equivalent to a classical cipher and thus easily attackable. However, large block size: not practical implementation and performance. So, Feistel's suggestion is **invertible product cipher**.
+   - **Product cipher**: Execution of 2 or more simple ciphers in sequence so that the result is cryptographically stronger. Alternates substitutions and permutations.
+   - **S-Boxes and P-Boxes**, a proposal by Shannon to develop a product cipher that alternates confuse and diffusion functions. S-Boxes "confuse" input bits; P-Boxes "diffuse" bits across S-box inpus.
+   - ![](Asset/FeistelEncryption.jpg)
+   - A substitution is performed on LE<sub>i</sub> by applying a **round function** F to RE<sub>i</sub> and then XORing output with LE<sub>i</sub>.F has same general structure for each round is parameterized by round subkey K<sub>i</sub>. Then a permutation is performed: interchange of two halves of data.
+   - 
 
 ### Week 5
 1. DES De
