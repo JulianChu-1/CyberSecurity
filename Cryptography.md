@@ -19,6 +19,7 @@
 - Mandatory access control (MAC), system-wide policies define subject access to objects, and owners cannot change this.
 - Role based access control (RBAC), access is based on a common set of privileges that apply to all subjects in the same role.
 - Rule-based access control (RAC), access to objects is based on a list of rules defined by the owners for each subject.
+- A Reference Monitor is a mechanism used to enforce access control policies, Reference Monitor must be NEAT: Non-bypassable, Evaluable, Always Invoked, Tamper-proof.
 
 #### Other
 - Access Control Matrix Model, a protection state (relative to a set of privileges **P**) is a triple (**S**,**O**,**M**).
@@ -56,7 +57,7 @@ A substitution cipher is one in which the letters of plaintext are replaced by o
    - $$ C = E(\mathbf{x}, P) = (P + \mathbf{x}) \mod 26 $$
    - Insecurity: There are only 25 keys to try. 
 2. Mono-alphabetic substitution ciphers
-   - Generalize Caesar cipher by allowing an arbitrary (任意的) substitution.
+   - Generalize Caesar cipher by allowing an arbitrary substitution.
    - Let **K** be the set of all permutations on the alphabet **A**. 26 letters $\rightarrow$ 26! possible keys.
    - Insecurity: Easy to crack using frequency analysis.
 3. Homophonic substitution ciphers
@@ -89,6 +90,8 @@ A substitution cipher is one in which the letters of plaintext are replaced by o
 ### Week 4
 #### Steganography and Composite ciphers
    - Conceal the existence of the message. For example, Arrangement of words or letters, Invisible ink, Pin punctures.
+   - General model of Steganography
+   - ![](Asset/Steganography.jpg)
    - Watermarking and DRM (Digital Rights Management)
    - Product ciphers chain substitution-transposition combinations. One example is Rotor machines used in WW2. Used a series of cylinders, each giving one substitution, which rotated and changed after each letter was encrypted.
 
@@ -99,8 +102,54 @@ A substitution cipher is one in which the letters of plaintext are replaced by o
    - **S-Boxes and P-Boxes**, a proposal by Shannon to develop a product cipher that alternates confuse and diffusion functions. S-Boxes "confuse" input bits; P-Boxes "diffuse" bits across S-box inpus.
    - ![](Asset/FeistelEncryption.jpg)
    - A substitution is performed on LE<sub>i</sub> by applying a **round function** F to RE<sub>i</sub> and then XORing output with LE<sub>i</sub>.F has same general structure for each round is parameterized by round subkey K<sub>i</sub>. Then a permutation is performed: interchange of two halves of data.
-   - 
+   - Intermediate value of decryption process equal to corresponding value of encryption process with two halves of value swapped. LD<sub>16 - i</sub> || RD<sub>16 - i</sub> = RE<sub>i</sub> || LE<sub>i</sub>
+   - ![](Asset/FeistelDe.jpg)
 
 ### Week 5
-1. DES De
+#### DES, the Data Encryption Standard
+   - ![](Asset/DESOverall.jpg)
+   - If a 64-bit DES key is divided into 8 bytes, then the sum of the eight bit of each byte is odd. This means that 7 of the 8 bits determine the value of the 8th bit.
+   - IP and IP<sup>-1</sup> has no real cryptographic significance.
+   - Initially, key is passed through a **permutation** function(64 $\rightarrow$ 56), for each of 16 rounds, a subkey K<sub>i</sub> is produced by combination of a **left cicular shift** and a permutation.
+   - ![](Asset/DESSingle.jpg)
+   - Substitution consists of a set of 8 S-boxes, each of which accepts 6 bits as input and produces 4 bits as output. For each S<sub>i</sub>(4 * 16 matrix), first and last bits of the input to form a 2-bit number to select row, and middle 4 bits select column, then select a number to produce 4-bit output.
+   - Security of DES: differential analysis, linear analysis and exhaustive search of the key space.
+   - Triple DES, use 3 stages of encryption with 2 keys Key1, Key2, also can use three different keys.
 
+#### AES, Advanced Encryption Standard
+
+### Week 6
+#### Block cipher modes of operation
+1. Electronic Codebook(ECB)
+- Plaintext message broken into N independent blocks P<sub>i</sub>, each block encrypted individually with the same key, C<sub>i</sub> = E(K, P<sub>i</sub>). And each ciphertext block is decrypted also individually.
+- ECB is not recommended for messages longer than a block, cuz same block of plaintext always produces the same ciphertext, and for example, the message is highly structured.
+- Ideal for a short amount of data, such as an encryption key, e.g., to transmit a DES key.
+2. Cipher-block Chaining (CBC)
+- For C<sub>0</sub> = IV(initialization Vector) and 1 < i <= n:   
+  $C_1 = E(K, IV \oplus P_1)$     
+  $C_i = E(K, C_{i-1} \oplus P_i)$    
+  $P_i = D(K, C_i) \oplus C_{i-1}$ 
+- IV: A data block that is that same size as cipher block.
+- Identical plaintext blocks mapped to different ciphertext.    
+  Chaining dependencies: C<sub>i</sub> depends on all preceding plaintext.    
+  Self-synchronizing: if an error occurs in C<sub>i</sub> but not in C<sub>i + 1</sub>, then C<sub>i + 2</sub> is correctly decrypted.
+- CBC appropriate for encrypting messgaes of length greater than b bits, and can be used for confidentiality and for authentication.
+3. Cipher Feedback (CFB)
+- Rather than blocks of b bits, plaintext is divided into segments(a.k.a. "units of transmission") of s bits.
+- ![](Asset/CFB.jpg)
+4. Output Feedback (OFB)
+- Similar in structure to CFB, except for 2 differences:    
+  Output of encryption function is fed back to shift register.      
+  OFB operates on full blocks, not on an s-bit subset.
+- ![](Asset/OFB.jpg)
+
+#### Pubilc-Key Cryptography
+- Consider transformation pairs (E<sub>e</sub>, D<sub>d</sub>) where knowing E<sub>e</sub> it is infeasible, given c, to find an m such that E<sub>e</sub>(m) = c.
+- ![](Asset/PUK.jpg)
+- Applications: Encryption/Decryption, Key Exchange, Digital Signature
+- public-key cryptanalysis: brute-force attacks, computing private key from public key, probable-message attack.
+
+### Week 7
+#### Number theory
+- Extended Euclid's Algorithm
+- Modular arithmetics

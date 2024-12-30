@@ -1,7 +1,10 @@
-## Security Management
-### Week 1
+## Review of Security Management
 
-### Week 2
+### Information Security Management Principles
+1. Basic definition
+- Inforamtion Assurance, Confidentiality, Integrity, Availability, Asset, Threat, Vulnerability, Risk, Impact.
+- Controls: Eliminate, Reduce, Transfer, Accept.
+- Identity, Authentication, Authorisation, Accountability, Audit, Compliance, Information Security Management System, Information Security, 
 
-- Two main types of threat agents, natural or accidental and malicious
-- 
+
+### Slides
