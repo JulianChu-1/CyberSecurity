@@ -86,6 +86,7 @@ A substitution cipher is one in which the letters of plaintext are replaced by o
    - 
 
 3. Multiple-stage columnar transposition cipher
+- Write message in a rectangle, row by row, and read message off, column by column, but permute the order of the columns. Multiple stages of encryption can produce analgorithm that is significantly more difficult to cryptanalyze.
 
 ### Week 4
 #### Steganography and Composite ciphers
@@ -117,6 +118,9 @@ A substitution cipher is one in which the letters of plaintext are replaced by o
    - Triple DES, use 3 stages of encryption with 2 keys Key1, Key2, also can use three different keys.
 
 #### AES, Advanced Encryption Standard
+
+#### Linear Cryptography
+- Linear Cryptanalysis refers to a category of attack launched against block ciphers.
 
 ### Week 6
 #### Block cipher modes of operation
@@ -151,5 +155,64 @@ A substitution cipher is one in which the letters of plaintext are replaced by o
 
 ### Week 7
 #### Number theory
+- Terminology: relatively prime, quotient, remainder, congruent modulo, gcd
 - Extended Euclid's Algorithm
 - Modular arithmetics
+- Euler Totient Function
+- Chinese Remainder Theorem
+
+#### RSA Algorithm
+- $C = M^e \bmod n \\ 
+   M = C^d \bmod n$
+- ![](/Asset/RSA.jpg)
+
+#### Asymmetric algorithms for secret key distribution
+1. Distribution of symmetric keys with RSA
+- Example: SSL protocol, but if the private key (d,n) gets compromised, then secret key can be recovered by an intruder from previously observed traffic.
+
+### Week 8
+#### Asymmetric algorithms for secret key distribution
+1. Diffie-Hellman key exchange
+- A primitive root s of a prime number p is a number whose powers generate 1,...,p-1.   
+  $b = s^i \bmod p$, where 1 <= i < p   
+  and i is called the discrete logarithm of b for base s, mod p.
+- ![](/Asset/Diffie.jpg)
+- It is very difficult to calculate discrete logarithms, and security depends on the difficulty of computing discrete logarithms.
+- The Diffie-Hellman key exchange is vulnerable to man-in-the-middle attack because it does not authenticate the participants. But this vulnerability can be overcome with the use of digital signatures and public-key certificates to achieve mutual authentication between A and B.
+- El Gamal variant of Diffie-Hellman key exchange and Massey-Omura scheme  
+2. Message Integrity
+- A hash function h(x) has the properties of compression and polynomial time computable, and h(x) is one-way (or pre-image resistant), hash value also called message digest or modification detection code.
+- ![](/Asset/hash.jpg)
+3. Message Authentication
+- Message Authentication codes(MACs), a MAC algorithm is a family of hash function h<sub>k</sub> parameterized by a secret key k. h<sub>k</sub> must be computation-resistant: given zero or more MAC pairs , it is infeasible to compute a new input.    
+  $c_1 = E_K (m_1 \oplus 0), c_i = E_K (c_i-1 \oplus m_i)$
+- Digital signatures, M is set of messages that can be signed, S is set of elements called signatures, $S_A: M \rightarrow S$, is a signing transformation, $V_A: M \times S \rightarrow {true,false}$ is a verification transformation. This is called Digital Signature Algorithm (DSA).
+
+
+### Week 9
+#### Security Protocols
+- Security protocols use cryptographic mechanisms to achieve security objectives. For example, Entity or message authenication, key establishment, ...
+- The Needham-Schroeder Public Key Protocol (NSPK), 
+  $\begin{array}{ll}A \rightarrow B: & \{NA, A\}_{K_{B}} \\B \rightarrow A: & \{NA, N B\}_{K_{A}} \\A \rightarrow B: & \{NB\}_{K_{B}}\end{array}$ 
+- The Kerberos Protocol intended to have three components to guard a network's gate: authentication, accounting, and audit. It has some requirements: secure, reliable, transparent, scalable.
+  1. A to KAS, m: A, TGS
+  2. KAS to A, m: Time-limited session key(K<subA,TGS</sub>>) and an encrypted ticket AuthTicket.
+  3. A to TGS, m: AuthTicket, authticator, B
+  4. TGS to A, m: A new session key K<sub>AB</sub>, and a new ticket ServTicket
+  5. A to B, m: ServTicket and a new authticator
+  6. B to A(optional), m: authenticating service.
+
+
+### Week 10
+#### Authentication and passwords
+1. Anything
+- Cryptographic challenge-response protocols, this is done by providing a response to a time-variant challenge, where the response depends on both the entity's secret and the challenge.
+- Increase the entropy, password ageing, passphrases, PINs(Personal indentification numbers), MFA(Multi-factor authentication), One-time passwords
+2. Zero-konwledge Proofs
+- Fiat-Shamir Identification Protocol,      
+  ![](/Asset/fait.jpg)
+- Feige-Fiat-Shamir Protocol, Guillou-Quisquater Protocol
+3. Social Engineering
+- Important user, Third-party Authorization, Tech Support
+- Computer-based social engineering: mail attachments, website, popup windows, fake wireless network.
+- Phishing, SMiShing, Vishing.
